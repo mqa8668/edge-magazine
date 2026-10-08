@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="Abstract placeholder cover">
+<defs><linearGradient id="g" gradientTransform="rotate(196 .5 .5)"><stop offset="0" stop-color="hsl(154 55% 38%)"/><stop offset="1" stop-color="hsl(222 60% 62%)"/></linearGradient></defs>
+<rect width="1600" height="900" fill="url(#g)"/>
+<rect x="1209" y="267" width="236" height="236" rx="28" fill="#ffffff" fill-opacity="0.34" transform="rotate(237 1327 385)"/>
+<polygon points="1470,271 1600,531 1340,531" fill="hsl(222 70% 88%)" fill-opacity="0.25" transform="rotate(12 1470 401)"/>
+<polygon points="24,265 261,738 -212,738" fill="hsl(222 70% 88%)" fill-opacity="0.26" transform="rotate(37 24 501)"/>
+<rect x="408.5" y="446.5" width="341" height="341" rx="41" fill="#ffffff" fill-opacity="0.18" transform="rotate(304 579 617)"/>
+<circle cx="980" cy="694" r="184" fill="#ffffff" fill-opacity="0.30"/>
+<circle cx="164" cy="17" r="231" fill="#ffffff" fill-opacity="0.16"/>
+<rect x="653.5" y="595.5" width="351" height="351" rx="42" fill="hsl(222 70% 88%)" fill-opacity="0.33" transform="rotate(187 829 771)"/>
+<polygon points="867,168 941,316 793,316" fill="hsl(222 70% 88%)" fill-opacity="0.20" transform="rotate(23 867 242)"/>
+<circle cx="870" cy="576" r="181" fill="none" stroke="#ffffff" stroke-opacity="0.45" stroke-width="6"/>
+<rect x="0" y="864" width="1600" height="36" fill="#000000" fill-opacity="0.18"/>
+</svg>

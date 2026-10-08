@@ -1,0 +1,30 @@
+# Local secrets for `wrangler dev`. Copy to `.dev.vars` (gitignored) and fill in.
+# In production set them with `wrangler secret put <NAME>`.
+
+# Bearer token for the /api endpoints.
+PUBLISH_TOKEN="dev-publish-token-change-me"
+
+# /admin login. Generate the hash with: npm run admin:hash -- "<password>"
+# Leaving it empty keeps /admin disabled (503).
+ADMIN_PASSWORD_HASH=""
+SESSION_SECRET="change-me-any-long-random-string"
+
+# Drafting assistant. Workers AI needs no key. These providers are optional.
+# DeepSeek.
+DEEPSEEK_API_KEY=""
+
+# Groq.
+GROQ_API_KEY=""
+# Any OpenAI-compatible endpoint; also set llm.openaiCompat {baseUrl, model} in /admin/config.
+OPENAI_COMPAT_API_KEY=""
+
+# Optional Pexels stock photos for generated drafts. Empty = no third-party cover.
+PEXELS_API_KEY=""
+
+# Optional ops alerts. Telegram needs no domain verification; email goes through Resend.
+RESEND_API_KEY=""
+TELEGRAM_BOT_TOKEN=""
+TELEGRAM_CHAT_ID=""
+
+# Optional Turnstile on the newsletter form. Empty in dev = verification skipped.
+TURNSTILE_SECRET_KEY=""

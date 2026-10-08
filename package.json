@@ -1,0 +1,69 @@
+{
+  "name": "edge-magazine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A server-rendered magazine on Cloudflare Workers (Hono, D1, KV, R2) with an optional, guarded LLM drafting pipeline.",
+  "scripts": {
+    "dev": "wrangler dev",
+    "predeploy": "npm run typecheck && npm run check:content && npm test",
+    "deploy": "wrangler d1 migrations apply DB --remote && wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "cf-typegen": "wrangler types",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate:local": "wrangler d1 migrations apply DB --local",
+    "db:migrate:remote": "wrangler d1 migrations apply DB --remote",
+    "seed:images": "node scripts/upload-r2.mjs",
+    "seed:images:remote": "node scripts/upload-r2.mjs --remote",
+    "gen:assets": "node scripts/gen-assets.mjs",
+    "gen:og": "node scripts/gen-og.mjs",
+    "check:content": "node scripts/check-content.mjs",
+    "admin:hash": "node scripts/admin-hash.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "db:studio": "drizzle-kit studio",
+    "seed:local": "wrangler d1 execute DB --local --file seed/sample.sql",
+    "seed:remote": "wrangler d1 execute DB --remote --file seed/sample.sql",
+    "gen:covers": "node scripts/gen-covers.mjs",
+    "setup:local": "npm run db:migrate:local && npm run seed:local && npm run gen:assets && npm run seed:images"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.44.6",
+    "hono": "^4.10.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20251007.0",
+    "@resvg/resvg-js": "^2.6.2",
+    "drizzle-kit": "^0.31.5",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.6",
+    "wrangler": "^4.54.0"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=22 <25"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mqa8668/edge-magazine.git"
+  },
+  "cloudflare": {
+    "bindings": {
+      "DB": {
+        "description": "D1 database holding posts, authors, categories and the FTS5 search index."
+      },
+      "CACHE_KV": {
+        "description": "KV namespace for rendered-page cache, runtime config (cfg:v1) and circuit-breaker state."
+      },
+      "UPLOADS": {
+        "description": "R2 bucket for cover images and uploads."
+      },
+      "AI": {
+        "description": "Workers AI, the default (keyless) provider for the optional drafting assistant."
+      },
+      "GENERATE_QUEUE": {
+        "description": "Queue used by the admin \"run now\" button for background drafting."
+      }
+    }
+  }
+}
