@@ -37,7 +37,7 @@
     "drizzle-kit": "^0.31.5",
     "typescript": "^5.9.3",
     "vitest": "^3.2.6",
-    "wrangler": "^4.54.0"
+    "wrangler": "^4.147.0"
   },
   "license": "MIT",
   "engines": {
