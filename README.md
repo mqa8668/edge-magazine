@@ -6,7 +6,7 @@ A server-rendered magazine that runs entirely on Cloudflare Workers, with an LLM
 [![CI](https://github.com/mqa8668/edge-magazine/actions/workflows/ci.yml/badge.svg)](https://github.com/mqa8668/edge-magazine/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-<!-- screenshot.png -->
+<p align="center"><img src="docs/media/demo.gif" alt="Edge Magazine: homepage, an article page, then search results for focus" width="900"></p>
 
 The site ships with six short sample articles, so it renders something useful the moment you deploy it. The drafting assistant is off until you enable it.
 
@@ -24,6 +24,12 @@ I wanted to see how far the Cloudflare edge stack goes for a real publishing sit
 - A newsletter signup stored in D1, with optional Turnstile.
 - An optional drafting pipeline with spend caps, a circuit breaker, validation, a safety filter, duplicate detection and human review.
 - Cloudflare Queues for background runs and Cron Triggers for the schedule.
+
+## Screenshots
+
+<p align="center"><img src="docs/media/admin-overview.png" alt="Admin overview with post, queue and LLM cost stats" width="720"></p>
+
+The `/admin` overview: posts, queue, review count and LLM spend, shown here with the sample articles and the drafting assistant off.
 
 ## How it works
 
