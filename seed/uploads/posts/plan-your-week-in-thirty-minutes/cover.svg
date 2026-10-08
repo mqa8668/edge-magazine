@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="Abstract placeholder cover">
+<defs><linearGradient id="g" gradientTransform="rotate(314 .5 .5)"><stop offset="0" stop-color="hsl(267 55% 38%)"/><stop offset="1" stop-color="hsl(324 60% 62%)"/></linearGradient></defs>
+<rect width="1600" height="900" fill="url(#g)"/>
+<polygon points="476,244 681,653 272,653" fill="#ffffff" fill-opacity="0.15" transform="rotate(30 476 448)"/>
+<circle cx="250" cy="724" r="189" fill="#ffffff" fill-opacity="0.25"/>
+<polygon points="1230,434 1447,868 1013,868" fill="#ffffff" fill-opacity="0.22" transform="rotate(328 1230 651)"/>
+<circle cx="1396" cy="116" r="80.5" fill="#ffffff" fill-opacity="0.34"/>
+<polygon points="1574,533 1713,811 1435,811" fill="#ffffff" fill-opacity="0.17" transform="rotate(33 1574 672)"/>
+<circle cx="621" cy="290" r="273" fill="none" stroke="#ffffff" stroke-opacity="0.45" stroke-width="6"/>
+<rect x="0" y="864" width="1600" height="36" fill="#000000" fill-opacity="0.18"/>
+</svg>

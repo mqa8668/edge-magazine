@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="82" fill="#f8f8f6"/>
+  <g transform="translate(72 72) scale(3.69)">
+    <rect width="100" height="100" rx="22" fill="#111111"/>
+    <text x="50" y="50" dy="0.35em" text-anchor="middle" font-family="'Playfair Display', Georgia, 'Times New Roman', serif" font-size="68" font-weight="800" fill="#f8f8f6">E</text>
+    <circle cx="80" cy="80" r="6" fill="#d9291b"/>
+  </g>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f8f8f6"/>
+  <rect x="0" y="0" width="1200" height="12" fill="#d9291b"/>
+  <g transform="translate(80 251) scale(1.28)">
+    <rect width="100" height="100" rx="22" fill="#111111"/>
+    <text x="50" y="50" dy="0.35em" text-anchor="middle" font-family="'Playfair Display', Georgia, 'Times New Roman', serif" font-size="68" font-weight="800" fill="#f8f8f6">E</text>
+    <circle cx="80" cy="80" r="6" fill="#d9291b"/>
+  </g>
+  <text x="240" y="327.48" font-family="'Playfair Display', Georgia, 'Times New Roman', serif" font-size="104" font-weight="800" fill="#111111" letter-spacing="-2">Edge Magazine</text>
+</svg>

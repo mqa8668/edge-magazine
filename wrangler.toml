@@ -1,0 +1,87 @@
+# Edge Magazine - Cloudflare Workers config.
+#
+# No account, database, KV or bucket IDs live here. `wrangler deploy` (and the
+# Deploy to Cloudflare button) provisions D1, KV, R2 and the queue in your own
+# account from the names below and fills the IDs in at deploy time.
+#
+# Secrets are NOT stored here. Set them with `wrangler secret put <NAME>`
+# (see .dev.vars.example for the full list).
+
+name = "edge-magazine"
+main = "src/index.ts"
+compatibility_date = "2025-06-01"
+compatibility_flags = ["nodejs_compat"]
+
+workers_dev = true
+
+# Structured logs (src/lib/log.ts) show up in the dashboard and `wrangler tail`.
+[observability]
+enabled = true
+head_sampling_rate = 1
+
+# To serve the site on your own domain, attach a Custom Domain in the dashboard
+# (Workers > edge-magazine > Settings > Domains & Routes), then set SITE_URL below.
+
+# Cron triggers, branched by `controller.cron` in src/index.ts scheduled().
+# All three are no-ops until `pipeline.enabled` is switched on in /admin.
+#   "0 1 * * *"   daily generation
+#   "0 8 * * *"   top-up: only fills the gap if the day published fewer posts than the cap
+#   "30 13 * * *" ops heartbeat (health digest to Telegram/email when configured)
+[triggers]
+crons = ["0 1 * * *", "0 8 * * *", "30 13 * * *"]
+
+# Static assets (favicons, manifest, css) served from ./public, asset-first.
+[assets]
+directory = "./public"
+
+# Public, non-secret config. Operational tuning (cadence, budgets, kill switch,
+# publish mode) lives in KV (cfg:v1) and is edited from /admin.
+[vars]
+# Empty SITE_URL falls back to the request origin.
+SITE_URL = ""
+SITE_NAME = "Edge Magazine"
+CONTACT_EMAIL = ""
+GA4_ID = ""
+GTM_ID = ""
+ADSENSE_PUBLISHER_ID = ""
+# Cloudflare Web Analytics beacon token; empty = off.
+CF_BEACON_TOKEN = ""
+# Ops alerts. Empty = off.
+ALERT_EMAIL = ""
+ALERT_EMAIL_FROM = ""
+# Cloudflare AI Gateway "accountId/gatewayId"; empty = call providers directly.
+AI_GATEWAY = ""
+# Turnstile public site key for the newsletter form; empty = widget hidden and
+# the server-side check is skipped. Pair with the TURNSTILE_SECRET_KEY secret.
+TURNSTILE_SITE_KEY = ""
+# IndexNow key; empty = off. The Worker answers /<key>.txt itself when it matches.
+INDEXNOW_KEY = ""
+
+[[d1_databases]]
+binding = "DB"
+database_name = "edge_magazine"
+migrations_dir = "migrations"
+
+[[kv_namespaces]]
+binding = "CACHE_KV"
+
+[[r2_buckets]]
+binding = "UPLOADS"
+bucket_name = "edge-magazine-uploads"
+
+# Workers AI: the default LLM provider for the drafting assistant (no API key).
+[ai]
+binding = "AI"
+
+# Background generation. Admin "run now" enqueues here so a run gets a
+# queue-consumer time budget instead of the short post-response budget.
+[[queues.producers]]
+binding = "GENERATE_QUEUE"
+queue = "edge-magazine-generate"
+
+[[queues.consumers]]
+queue = "edge-magazine-generate"
+max_batch_size = 1
+max_batch_timeout = 5
+max_concurrency = 1
+max_retries = 1
